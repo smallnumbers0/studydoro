@@ -17,7 +17,7 @@ function App() {
 
   function addStudyTimeToStorage(studiedMinutes) {
     const currentTotal = localStorage.getItem("totalStudyTime");
-    const totalMinutes = currentTotal ? parseInt(currentTotal) : 0;
+    const totalMinutes = currentTotal ? Number(currentTotal) : 0;
     localStorage.setItem(
       "totalStudyTime",
       (totalMinutes + studiedMinutes).toString()
