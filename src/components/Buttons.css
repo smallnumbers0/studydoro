@@ -1,25 +1,25 @@
-button {
-  background-color: #000000;
-  color: rgba(255, 255, 255, 0.87);
-  border: 2px solid #a800c2;
-  font-size: 1em;
-  box-shadow: rgba(226, 5, 5, 0.16) 0px 1px 4px,
-    rgb(140, 37, 230) 0px 0px 0px 3px;
-  padding: 1em 2em;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
 .button-container {
-  margin-top: 1rem;
+  margin-top: 2rem;
   display: flex;
   justify-content: center;
   gap: 1rem;
 }
 
+button {
+  background-color: #000000;
+  color: rgba(255, 255, 255, 0.87);
+  border: 2px solid #000000;
+  font-size: 1em;
+  box-shadow: rgba(226, 5, 5, 0.16) 0px 1px 4px,
+    #7b42f5 0px 0px 0px 3px;
+  padding: 1em 2em;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 button:hover {
-  background-color: #20e6ae;
-  border: 2px solid #a800c2;
+  background-color: #07b39b;
+  border: 2px solid #7b42f5;
   transition: 0.3s ease-in-out;
   color: black;
 }
