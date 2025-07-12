@@ -35,7 +35,7 @@ function App() {
             return { mins: prevTime.mins - 1, secs: 59 };
           } else {
             setIsRunning(false);
-            addStudyTimeToStorage(1); //im adding just 1 minute when timer ends, but getting 2 in local storage
+            addStudyTimeToStorage(1); 
             return prevTime;
           }
         });
