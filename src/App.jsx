@@ -6,10 +6,23 @@ import Buttons from "./components/Buttons";
 
 function App() {
   const [time, setTime] = useState({
-    mins: 50,
-    secs: 0,
+    mins: 0,
+    secs: 5,
   });
   const [isRunning, setIsRunning] = useState(false);
+
+  function handleToggle() {
+    setIsRunning(!isRunning);
+  }
+
+  function addStudyTimeToStorage(studiedMinutes) {
+    const currentTotal = localStorage.getItem("totalStudyTime");
+    const totalMinutes = currentTotal ? parseInt(currentTotal) : 0;
+    localStorage.setItem(
+      "totalStudyTime",
+      (totalMinutes + studiedMinutes).toString()
+    );
+  }
 
   useEffect(() => {
     let interval = null;
@@ -22,6 +35,7 @@ function App() {
             return { mins: prevTime.mins - 1, secs: 59 };
           } else {
             setIsRunning(false);
+            addStudyTimeToStorage(1); //im adding just 1 minute when timer ends, but getting 2 in local storage
             return prevTime;
           }
         });
@@ -37,11 +51,11 @@ function App() {
       </div>
       <Timer time={time} />
       <Buttons
-        onStart={() => setIsRunning(true)}
-        onPause={() => setIsRunning(false)}
+        onToggle={handleToggle}
+        isRunning={isRunning}
         onReset={() => {
           setIsRunning(false);
-          setTime({ mins: 50, secs: 0 });
+          setTime({ mins: 0, secs: 5 });
         }}
       />
     </>

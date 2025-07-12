@@ -1,13 +1,10 @@
 import "./Buttons.css";
 
-function Buttons({ onStart, onPause, onReset }) {
+function Buttons({ onToggle, isRunning, onReset }) {
   return (
     <div className="button-container">
-      <button type="button" className="button" onClick={onStart}>
-        Start
-      </button>
-      <button type="button" className="button" onClick={onPause}>
-        Pause
+      <button type="button" className="button" onClick={onToggle}>
+        {!isRunning ? "Start" : "Pause"}
       </button>
       <button type="button" className="button" onClick={onReset}>
         Reset
