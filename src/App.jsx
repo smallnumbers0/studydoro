@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import './App.css'
+import Timer from './components/Timer'
+
+import Buttons from './components/Buttons'
 
 function App() {
 
@@ -8,6 +11,8 @@ function App() {
       <div>
         <h1>Doom Scroll Doro</h1>
       </div>
+      <Timer />
+      <Buttons/>
     </>
   )
 }

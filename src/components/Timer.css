@@ -1,0 +1,11 @@
+.timer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.timer {
+    font-size: 48px;
+    font-weight: bold;
+}
