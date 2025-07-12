@@ -1,12 +1,13 @@
-import './Timer.css';
+import "./Timer.css";
 
-
-function Timer() {
-    return (
-        <div className="timer-container">
-            <h2 className="timer">00:00</h2>
-        </div>
-    )
+function Timer({ time }) {
+  return (
+    <div className="timer-container">
+      <h2 className="timer">
+        {time.mins}:{time.secs}
+      </h2>
+    </div>
+  );
 }
 
 export default Timer;
