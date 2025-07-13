@@ -16,7 +16,7 @@ function App() {
   const [isRunning, setIsRunning] = useState(false);
 
   function handleToggle() {
-    setIsRunning(!isRunning);
+    setIsRunning(isRunning);
   }
 
   function addStudyTimeToStorage(studiedMinutes) {
