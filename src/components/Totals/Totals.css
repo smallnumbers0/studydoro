@@ -1,0 +1,11 @@
+.totals-container {
+  color: rgb(255, 255, 255);
+  font-size: 0.8rem;
+  background-color: #000000;
+  box-shadow: rgba(226, 5, 5, 0.16) 0px 1px 4px,
+    rgb(140, 37, 230) 0px 0px 0px 3px;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+}

@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import "./App.css";
-import Timer from "./components/Timer";
-import Buttons from "./components/Buttons";
+import Timer from "./components/Timer/Timer";
+import Buttons from "./components/Buttons/Buttons";
+import Totals from "./components/Totals/Totals";
+
 //time is set to 5 secs for debugging,
 function App() {
   const [time, setTime] = useState({
     mins: 0,
     secs: 5,
   });
-  const [isStudyTime, setIsStudyTime] = useState(false);
+  const [isStudyTime, setIsStudyTime] = useState(true);
   const [isBreakTime, setIsBreakTime] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
 
@@ -58,7 +60,7 @@ function App() {
               setTime({ mins: 0, secs: 3 });
               addBreakTimeToStorage(1);
             }
-            return prevTime;
+            return runningTime;
           }
         });
       };
@@ -67,13 +69,13 @@ function App() {
     }
 
     return () => clearInterval(interval);
-  }, [isRunning]);
+  }, [isRunning, isStudyTime]);
   return (
     <>
       <div>
         <h1>Doom Scroll Doro</h1>
       </div>
-      <Timer time={time} />
+      <Timer time={time} isStudyTime={isStudyTime} />
       <Buttons
         onToggle={handleToggle}
         isRunning={isRunning}
@@ -82,6 +84,7 @@ function App() {
           setTime({ mins: 0, secs: 5 });
         }}
       />
+      <Totals />
     </>
   );
 }
