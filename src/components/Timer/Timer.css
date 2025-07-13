@@ -1,14 +1,25 @@
+
 .timer {
   font-size: 2.5rem;
   font-weight: bold;
   padding: 1rem;
+  color: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
 }
 
 .timer-label {
-  font-size: 3rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #ffffff;
-  margin-bottom: 0.5rem;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+
+  margin: 0;
 }
 
 /* gradient border animation credit: https://codepen.io/mike-schultz/pen/NgQvGO */
@@ -22,6 +33,7 @@
   background: #000000;
   position: relative;
   border-radius: var(--borderWidth);
+  height: 250px;
 }
 
 .timer-container:after {
