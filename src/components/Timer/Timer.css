@@ -9,7 +9,23 @@
   left: 50%;
   transform: translate(-50%, -50%);
   margin: 0;
+
 }
+
+.mouse-effect {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    rgba(0,0,0,0.3) 0%,
+    rgba(0,0,0,0) 60%
+  );
+
+  z-index: 0;
+}
+
 
 .timer-label {
   font-size: 1.5rem;
@@ -18,31 +34,13 @@
   top: 10%;
   left: 50%;
   transform: translate(-50%, 100%);
-
   margin: 0;
 }
 
 /* gradient border animation credit: https://codepen.io/mike-schultz/pen/NgQvGO */
 
-.timer-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.timer-border {
   --borderWidth: 3px;
-  background: #000000;
-  position: relative;
-  border-radius: var(--borderWidth);
-  height: 250px;
-}
-
-.timer-container:after {
-  content: "";
-  position: absolute;
-  top: calc(-1 * var(--borderWidth));
-  left: calc(-1 * var(--borderWidth));
-  height: calc(100% + var(--borderWidth) * 2);
-  width: calc(100% + var(--borderWidth) * 2);
   background: linear-gradient(
     60deg,
     #f79533,
@@ -54,10 +52,27 @@
     #07b39b,
     #6fba82
   );
-  border-radius: calc(2 * var(--borderWidth));
-  z-index: -1;
+  border-radius: var(--borderWidth);
+  padding: var(--borderWidth);
+  height: 250px;
+  transition: transform 0.2s ease-out;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  will-change: transform;
   animation: animatedgradient 3s ease alternate infinite;
   background-size: 300% 300%;
+}
+
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  position: relative;
+  border-radius: calc(var(--borderWidth) - 1px);
+  height: 100%;
+  width: 100%;
 }
 
 @keyframes animatedgradient {
