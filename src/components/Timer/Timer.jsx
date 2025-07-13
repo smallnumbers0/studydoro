@@ -1,8 +1,7 @@
 import "./Timer.css";
-import React, { useRef } from "react";
+import { useRef } from "react";
 
 function Timer({ time, isWorkTime }) {
-  
   const containerRef = useRef(null);
   const effectRef = useRef(null);
 
@@ -10,14 +9,12 @@ function Timer({ time, isWorkTime }) {
     const rect = containerRef.current.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * 100;
     const y = ((e.clientY - rect.top) / rect.height) * 100;
-    
+
     effectRef.current.style.setProperty("--x", `${x}%`);
     effectRef.current.style.setProperty("--y", `${y}%`);
-    
 
-    const rotateY = ((x - 50) / 50) * 15; 
-    const rotateX = ((y - 50) / 50) * -15; 
-    
+    const rotateY = ((x - 50) / 50) * 15;
+    const rotateX = ((y - 50) / 50) * -15;
 
     containerRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   };
@@ -29,7 +26,8 @@ function Timer({ time, isWorkTime }) {
   };
 
   return (
-    <div className="timer-border"
+    <div
+      className="timer-border"
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -40,7 +38,8 @@ function Timer({ time, isWorkTime }) {
           {isWorkTime ? "Work Time" : "Scroll Time"}
         </h2>
         <h2 className="timer">
-          {String(time.mins).padStart(2, "0")}:{String(time.secs).padStart(2, "0")}
+          {String(time.mins).padStart(2, "0")}:
+          {String(time.secs).padStart(2, "0")}
         </h2>
       </div>
     </div>

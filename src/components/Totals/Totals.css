@@ -23,14 +23,14 @@
   width: calc(100% + var(--borderWidth) * 2);
   background: linear-gradient(
     60deg,
-    #f79533,
-    #f37055,
-    #ef4e7b,
-    #a166ab,
-    #5073b8,
-    #1098ad,
+    #6fba82,
     #07b39b,
-    #6fba82
+    #1098ad,
+    #5073b8,
+    #a166ab,
+    #ef4e7b,
+    #f37055,
+    #f79533
   );
   border-radius: calc(2 * var(--borderWidth));
   z-index: -1;
@@ -49,4 +49,3 @@
     background-position: 0% 50%;
   }
 }
-
