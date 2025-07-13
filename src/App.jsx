@@ -39,11 +39,11 @@ function App() {
     let interval = null;
     if (isRunning) {
       const toggleTimer = () => {
-        setTime((prevTime) => {
-          if (prevTime.secs > 0) {
-            return { mins: prevTime.mins, secs: prevTime.secs - 1 };
-          } else if (prevTime.mins > 0) {
-            return { mins: prevTime.mins - 1, secs: 59 };
+        setTime((runningTime) => {
+          if (runningTime.secs > 0) {
+            return { mins: runningTime.mins, secs: runningTime.secs - 1 };
+          } else if (runningTime.mins > 0) {
+            return { mins: runningTime.mins - 1, secs: 59 };
           } else {
             setIsRunning(false);
 
