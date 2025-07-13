@@ -4,18 +4,19 @@ import "./App.css";
 import Timer from "./components/Timer/Timer";
 import Buttons from "./components/Buttons/Buttons";
 import Totals from "./components/Totals/Totals";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [time, setTime] = useState({
-    mins: 50,
+    mins: 30,
     secs: 0,
   });
   const [isWorkTime, setisWorkTime] = useState(true);
   const [isBreakTime, setIsBreakTime] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
 
- function handleToggle() {
-    setIsRunning(!isRunning); 
+  function handleToggle() {
+    setIsRunning(!isRunning);
   }
 
   function addStudyTimeToStorage(studiedMinutes) {
@@ -48,16 +49,16 @@ function App() {
           } else {
             setIsRunning(false);
 
-            if(isWorkTime) {
+            if (isWorkTime) {
               setIsBreakTime(true);
               setisWorkTime(false);
-              setTime({ mins: 15, secs: 0 });
-              addStudyTimeToStorage(50); 
+              setTime({ mins: 10, secs: 0 });
+              addStudyTimeToStorage(30);
             } else {
               setisWorkTime(true);
               setIsBreakTime(false);
-              setTime({ mins: 50, secs: 0 });
-              addBreakTimeToStorage(15);
+              setTime({ mins: 30, secs: 0 });
+              addBreakTimeToStorage(10);
             }
             return runningTime;
           }
@@ -79,15 +80,20 @@ function App() {
         onToggle={handleToggle}
         isRunning={isRunning}
         onReset={() => {
-          if (window.confirm("Resetting the timer will go back to work time. Are you sure?")) {
+          if (
+            window.confirm(
+              "Resetting the timer will go back to work time. Are you sure?"
+            )
+          ) {
             setIsRunning(false);
-            setTime({ mins: 50, secs: 0 });
+            setTime({ mins: 30, secs: 0 });
             setisWorkTime(true);
             setIsBreakTime(false);
           }
         }}
       />
       <Totals />
+      <Footer />
     </>
   );
 }
