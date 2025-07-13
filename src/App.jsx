@@ -9,10 +9,12 @@ function App() {
     mins: 0,
     secs: 5,
   });
+  const [isStudyTime, setIsStudyTime] = useState(false);
+  const [isBreakTime, setIsBreakTime] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
 
-  function handleToggle() {
-    setIsRunning(!isRunning);
+ function handleToggle() {
+    setIsRunning(!isRunning); 
   }
 
   function addStudyTimeToStorage(studiedMinutes) {
@@ -23,24 +25,45 @@ function App() {
       (totalMinutes + studiedMinutes).toString()
     );
   }
-  //weird delay in the timer
+
+  function addBreakTimeToStorage(breakMinutes) {
+    const currentTotal = localStorage.getItem("totalBreakTime");
+    const totalMinutes = currentTotal ? Number(currentTotal) : 0;
+    localStorage.setItem(
+      "totalBreakTime",
+      (totalMinutes + breakMinutes).toString()
+    );
+  }
+
   useEffect(() => {
     let interval = null;
     if (isRunning) {
-      interval = setInterval(() => {
+      const toggleTimer = () => {
         setTime((prevTime) => {
           if (prevTime.secs > 0) {
             return { mins: prevTime.mins, secs: prevTime.secs - 1 };
           } else if (prevTime.mins > 0) {
-            prevTime.secs = 59; 
-            return { mins: prevTime.mins - 1, secs: prevTime.secs };
+            return { mins: prevTime.mins - 1, secs: 59 };
           } else {
             setIsRunning(false);
-            addStudyTimeToStorage(1); 
+
+            if(isStudyTime) {
+              setIsBreakTime(true);
+              setIsStudyTime(false);
+              setTime({ mins: 0, secs: 5 });
+              addStudyTimeToStorage(1); 
+            } else {
+              setIsStudyTime(true);
+              setIsBreakTime(false);
+              setTime({ mins: 0, secs: 3 });
+              addBreakTimeToStorage(1);
+            }
             return prevTime;
           }
         });
-      }, 1000);
+      };
+      toggleTimer();
+      interval = setInterval(toggleTimer, 1000);
     }
 
     return () => clearInterval(interval);
