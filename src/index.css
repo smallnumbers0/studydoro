@@ -23,14 +23,14 @@ body {
 
 h1 {
   color: rgb(255, 255, 255);
-  font-size: 3.2em;
+  font-size: 2.8em;
   line-height: 1.1;
   background-color: #000000;
   box-shadow: rgba(226, 5, 5, 0.16) 0px 1px 4px,
     rgb(140, 37, 230) 0px 0px 0px 3px;
   border: 2px solid #000000;
   border-radius: 5px;
-  padding: 1rem 2rem;
+  padding: 1.5rem 3rem;
 }
 
 @media screen and (max-width: 600px) {
