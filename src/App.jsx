@@ -5,6 +5,7 @@ import Timer from "./components/Timer/Timer";
 import Buttons from "./components/Buttons/Buttons";
 import Totals from "./components/Totals/Totals";
 import Footer from "./components/Footer/Footer";
+import Music from "./components/Music/Music";
 
 function App() {
   const [time, setTime] = useState({
@@ -16,7 +17,7 @@ function App() {
   const [isRunning, setIsRunning] = useState(false);
 
   function handleToggle() {
-    setIsRunning(isRunning);
+    setIsRunning(!isRunning);
   }
 
   function addStudyTimeToStorage(studiedMinutes) {
@@ -76,6 +77,7 @@ function App() {
         <h1>Doom Scroll Doro</h1>
       </div>
       <Timer time={time} isWorkTime={isWorkTime} />
+      <Music />
       <Buttons
         onToggle={handleToggle}
         isRunning={isRunning}

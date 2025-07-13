@@ -1,0 +1,14 @@
+.music-background {
+  position: fixed;
+  top: 4rem;
+  right: 4rem;
+
+}
+
+@media (max-width: 900px) {
+  .music-background {
+    display: none;
+
+  }
+
+}
