@@ -5,13 +5,12 @@ import Timer from "./components/Timer/Timer";
 import Buttons from "./components/Buttons/Buttons";
 import Totals from "./components/Totals/Totals";
 
-//time is set to 5 secs for debugging,
 function App() {
   const [time, setTime] = useState({
-    mins: 0,
-    secs: 5,
+    mins: 50,
+    secs: 0,
   });
-  const [isStudyTime, setIsStudyTime] = useState(true);
+  const [isWorkTime, setisWorkTime] = useState(true);
   const [isBreakTime, setIsBreakTime] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
 
@@ -49,16 +48,16 @@ function App() {
           } else {
             setIsRunning(false);
 
-            if(isStudyTime) {
+            if(isWorkTime) {
               setIsBreakTime(true);
-              setIsStudyTime(false);
-              setTime({ mins: 0, secs: 5 });
-              addStudyTimeToStorage(1); 
+              setisWorkTime(false);
+              setTime({ mins: 15, secs: 0 });
+              addStudyTimeToStorage(50); 
             } else {
-              setIsStudyTime(true);
+              setisWorkTime(true);
               setIsBreakTime(false);
-              setTime({ mins: 0, secs: 3 });
-              addBreakTimeToStorage(1);
+              setTime({ mins: 50, secs: 0 });
+              addBreakTimeToStorage(15);
             }
             return runningTime;
           }
@@ -69,19 +68,23 @@ function App() {
     }
 
     return () => clearInterval(interval);
-  }, [isRunning, isStudyTime]);
+  }, [isRunning, isWorkTime]);
   return (
     <>
       <div>
         <h1>Doom Scroll Doro</h1>
       </div>
-      <Timer time={time} isStudyTime={isStudyTime} />
+      <Timer time={time} isWorkTime={isWorkTime} />
       <Buttons
         onToggle={handleToggle}
         isRunning={isRunning}
         onReset={() => {
-          setIsRunning(false);
-          setTime({ mins: 0, secs: 5 });
+          if (window.confirm("Resetting the timer will go back to work time. Are you sure?")) {
+            setIsRunning(false);
+            setTime({ mins: 50, secs: 0 });
+            setisWorkTime(true);
+            setIsBreakTime(false);
+          }
         }}
       />
       <Totals />
