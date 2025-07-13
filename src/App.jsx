@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import "./App.css";
 import Timer from "./components/Timer";
 import Buttons from "./components/Buttons";
-
+//time is set to 5 secs for debugging,
 function App() {
   const [time, setTime] = useState({
     mins: 0,
@@ -23,16 +23,17 @@ function App() {
       (totalMinutes + studiedMinutes).toString()
     );
   }
-
+  //weird delay in the timer
   useEffect(() => {
     let interval = null;
     if (isRunning) {
       interval = setInterval(() => {
         setTime((prevTime) => {
           if (prevTime.secs > 0) {
-            return { ...prevTime, secs: prevTime.secs - 1 };
+            return { mins: prevTime.mins, secs: prevTime.secs - 1 };
           } else if (prevTime.mins > 0) {
-            return { mins: prevTime.mins - 1, secs: 59 };
+            prevTime.secs = 59; 
+            return { mins: prevTime.mins - 1, secs: prevTime.secs };
           } else {
             setIsRunning(false);
             addStudyTimeToStorage(1); 
