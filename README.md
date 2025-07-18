@@ -1,5 +1,7 @@
 # Studydoro
 
+https://doomscrolldoro.netlify.app/
+
 This project uses Vite + React where I will be learning from:
 
 https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries/React_getting_started
